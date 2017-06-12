@@ -77,37 +77,5 @@ M: (external HDD storage)
 
 Windows powershell script Arrange_pix.ps1
 
-
-
 arguments file Elia_copyrights.txt
-```powershell
--d
-%Y
-#Camera owner:
--OwnerName=Elia Harmouche
 
-#Photographer's name: 
--IFD0:Artist=Elia Harmouche
--IPTC:By-line=Elia Harmouche
--XMP-dc:Creator=Elia Harmouche 
-
-
-#Photographer's title:
--IPTC:By-lineTitle=Engineer
--XMP-photoshop:AuthorsPosition=Engineer
-
-#Desired credit line:
--XMP-photoshop:Credit=Elia Harmouche
-
-#Contact information — essential to avoid creating orphaned works:
--IPTC:Contact=email: eliaharm@gmail.com; website: http://eliaharm.com
--XMP-iptcCore:CreatorWorkEmail=eliaharm@gmail.com
--XMP-iptcCore:CreatorWorkURL=http://eliaharm.com
-
-#Copyright information:
--IFD0:Copyright<Copyright © $createdate Elia Harmouche, all rights reserved.
--IPTC:CopyrightNotice<Copyright © $createdate Elia Harmouche, all rights reserved.
--XMP-dc:Rights<Copyright © $createdate Elia Harmouche, all rights reserved.
--XMP-xmpRights:UsageTerms=For consideration only, no reproduction without prior permission
- 
-```
