@@ -16,61 +16,61 @@ C: (script and exeutables)
     
 D: (local machine storage)    
 └───Photos
-    └───Import
+    ├───Import
     │   ├───Nikon Transfer
     │   ├───Mobile Photos
     │   └───Mobile Videos
-    └───Originals
+    ├───Originals
     │   ├───Photos Sorted
-    |   |   ├───JPG
-    |   |   |   └───YYYY
-    |   |   |       └───YYYY-MM
-    |   |   └───RAW
-    |   |       └───YYYY
-    |   |           └───YYYY-MM
+    │   │   ├───JPG
+    │   │   │   └───YYYY
+    │   │   │       └───YYYY-MM
+    │   │   └───RAW
+    │   │       └───YYYY
+    │   │           └───YYYY-MM
     │   └───Videos Sorted
-    |       └───YYYY
-    |           └───YYYY-MM
-    └───Exports
+    │       └───YYYY
+    │           └───YYYY-MM
+    ├───Exports
     │   ├───Lightroom Exports
-    |   |   └───(Project Name)
+    │   │   └───(Project Name)
     │   └───Videos Created
-    |       └───(Project Name)
-    └───Small Size
-    │   |───Videos transcoded
-    |   |   └───YYYY
-    |   |───Photos downsized
-    |   |   └───YYYY
-    |   |       └───YYYY-MM
-    |   └───Sotial media pix
-    |       └───YYYY
-    |           └───YYYY-MM    
+    │       └───(Project Name)
+    ├───Small Size
+    │   ├───Videos transcoded
+    │   │   └───YYYY
+    │   ├───Photos downsized
+    │   │   └───YYYY
+    │   │       └───YYYY-MM
+    │   └───Sotial media pix
+    │       └───YYYY
+    │           └───YYYY-MM    
     └───Trash
         ├───Small Pix
         └───Other Files
  
 M: (external HDD storage)    
 └───Photos
-    └───Hight Resolution
+    ├───Hight Resolution
     │   ├───Photos Sorted
-    |   |   ├───JPG
-    |   |   |   └───YYYY
-    |   |   |       └───YYYY-MM
-    |   |   └───RAW
-    |   |       └───YYYY
-    |   |           └───YYYY-MM
+    │   │   ├───JPG
+    │   │   │   └───YYYY
+    │   │   │       └───YYYY-MM
+    │   │   └───RAW
+    │   │       └───YYYY
+    │   │           └───YYYY-MM
     │   ├───Lightroom Exports
-    |   |   └───(Project Name)
+    │   │   └───(Project Name)
     │   └───Videos Created
-    |       └───(Project Name)
-    └───Low Resolution
-    │   |───Old Library
-    |   |       └───(By Albumm Name)
-    │   |───New Library (JPG only includes Lightroom and social)
-    |   |   └───YYYY
-    |   |       └───YYYY-MM
+    │       └───(Project Name)
+    ├───Low Resolution
+    │   ├───Old Library
+    │   │       └───(By Albumm Name)
+    │   ├───New Library (JPG only includes Lightroom and social)
+    │   │   └───YYYY
+    │   │       └───YYYY-MM
     │   └───Videos (if TRANSCODED else SORTED)
-    |       └───YYYY
+    │       └───YYYY
     
     
 ```
