@@ -6,6 +6,7 @@
 #                                                                               #
 #################################################################################
 
+# Set-ExecutionPolicy RemoteSigned
 # clear powershell command screen
 cls; 
 # Set Alias for application and filders and files path
