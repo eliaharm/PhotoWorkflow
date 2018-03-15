@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetCustomerCards">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCustomerCards" type="tns:RequestCustomerCards" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCustomerCards">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerCardsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerCardsResult" type="tns:ResponseCustomerCards" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCustomerCards">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="HashedCardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardLevel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCardActivity" type="tns:RequestCardActivity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCardActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Days" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardActivityResult" type="tns:ResponseCardActivity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCardActivity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SettlementAmount" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="SettmenentCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantCountry" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionAmount" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="IssuingCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccountAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="AuthCode" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionCategory" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ResponseHeader" type="tns:ResponseHeader" />
+      <s:complexType name="ResponseHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseStatus" type="tns:ResponseStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:simpleType name="ResponseStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="OK" />
+          <s:enumeration value="ERROR" />
+          <s:enumeration value="INVALIDREQUEST" />
+          <s:enumeration value="WARNING" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCardBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCardBalance" type="tns:RequestCardBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCardBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardBalanceResult" type="tns:ResponseCardBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCardBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvailableAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentAmount" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LimitAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="PendingAuthsAmount" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardDueAmount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCardDueAmount" type="tns:RequestCardDueAmount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCardDueAmount">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardDueAmountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardDueAmountResult" type="tns:ResponseCardDueAmount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCardDueAmount">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AmountDue" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentDueDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardStatusUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCardStatusUpdate" type="tns:RequestCardStatusUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCardStatusUpdate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardStatusUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardStatusUpdateResult" type="tns:ResponseCardStatusUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCardStatusUpdate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CardStatusUpdatedSuccessfully" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCardTransaction" type="tns:RequestCardFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCardFund">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DebitAccountNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DebitAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditAmount" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionRequestDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsExternal" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCardTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardTransactionResult" type="tns:ResponseCardFund" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCardFund">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BalanceAmount" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetrievalReference" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerAddresses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCustomerAddresses" type="tns:RequestCustomerAddresses" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCustomerAddresses">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressCategory" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerAddressesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerAddressesResult" type="tns:ResponseCustomerAddresses" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCustomerAddresses">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Line1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Line2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Line3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Line4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Line5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerAddressUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCustomerAddressUpdate" type="tns:RequestCustomerAddressUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCustomerAddressUpdate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressCategory" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EffectiveDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerAddressUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerAddressUpdateResult" type="tns:ResponseCustomerAddressUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCustomerAddressUpdate" />
+      <s:element name="GetCustomerDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCustomerDetails" type="tns:RequestCustomerDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCustomerDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerDetailsResult" type="tns:ResponseCustomerDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCustomerDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FathersName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nationality" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TelPrivate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TelWork" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IBAN" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerDetailsUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCustomerDetailsUpdate" type="tns:RequestCustomerDetailsUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCustomerDetailsUpdate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerDetailsUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerDetailsUpdateResult" type="tns:ResponseCustomerDetailsUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCustomerDetailsUpdate" />
+      <s:element name="GetCustomerIBANs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCustomerIBANs" type="tns:RequestCustomerIBANs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCustomerIBANs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SettlementNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerIBANsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerIBANsResult" type="tns:ResponseCustomerIBANs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCustomerIBANs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SettlementNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IBANNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerIBANUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestCustomerIBANUpdate" type="tns:RequestCustomerIBANUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestCustomerIBANUpdate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueCardClientNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SettlementNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IBANNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerIBANUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerIBANUpdateResult" type="tns:ResponseCustomerIBANUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCustomerIBANUpdate" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCustomerCardsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerCards" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerCardsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerCardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardActivity" />
+  </wsdl:message>
+  <wsdl:message name="GetCardActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardActivityResponseHeader">
+    <wsdl:part name="ResponseHeader" element="tns:ResponseHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCardBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetCardBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardDueAmountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardDueAmount" />
+  </wsdl:message>
+  <wsdl:message name="GetCardDueAmountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardDueAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardStatusUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardStatusUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GetCardStatusUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardStatusUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCardTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardTransaction" />
+  </wsdl:message>
+  <wsdl:message name="GetCardTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAddressesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerAddresses" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAddressesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerAddressesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAddressUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerAddressUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerAddressUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerAddressUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailsUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerDetailsUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailsUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerIBANsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerIBANs" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerIBANsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerIBANsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerIBANUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerIBANUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerIBANUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerIBANUpdateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CSCIntegrationSoap">
+    <wsdl:operation name="GetCustomerCards">
+      <wsdl:input message="tns:GetCustomerCardsSoapIn" />
+      <wsdl:output message="tns:GetCustomerCardsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardActivity">
+      <wsdl:input message="tns:GetCardActivitySoapIn" />
+      <wsdl:output message="tns:GetCardActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardBalance">
+      <wsdl:input message="tns:GetCardBalanceSoapIn" />
+      <wsdl:output message="tns:GetCardBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardDueAmount">
+      <wsdl:input message="tns:GetCardDueAmountSoapIn" />
+      <wsdl:output message="tns:GetCardDueAmountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardStatusUpdate">
+      <wsdl:input message="tns:GetCardStatusUpdateSoapIn" />
+      <wsdl:output message="tns:GetCardStatusUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCardTransaction">
+      <wsdl:input message="tns:GetCardTransactionSoapIn" />
+      <wsdl:output message="tns:GetCardTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAddresses">
+      <wsdl:input message="tns:GetCustomerAddressesSoapIn" />
+      <wsdl:output message="tns:GetCustomerAddressesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAddressUpdate">
+      <wsdl:input message="tns:GetCustomerAddressUpdateSoapIn" />
+      <wsdl:output message="tns:GetCustomerAddressUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetails">
+      <wsdl:input message="tns:GetCustomerDetailsSoapIn" />
+      <wsdl:output message="tns:GetCustomerDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetailsUpdate">
+      <wsdl:input message="tns:GetCustomerDetailsUpdateSoapIn" />
+      <wsdl:output message="tns:GetCustomerDetailsUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerIBANs">
+      <wsdl:input message="tns:GetCustomerIBANsSoapIn" />
+      <wsdl:output message="tns:GetCustomerIBANsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerIBANUpdate">
+      <wsdl:input message="tns:GetCustomerIBANUpdateSoapIn" />
+      <wsdl:output message="tns:GetCustomerIBANUpdateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CSCIntegrationSoap" type="tns:CSCIntegrationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCustomerCards">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerCards" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardActivity">
+      <soap:operation soapAction="http://tempuri.org/GetCardActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCardActivityResponseHeader" part="ResponseHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardBalance">
+      <soap:operation soapAction="http://tempuri.org/GetCardBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardDueAmount">
+      <soap:operation soapAction="http://tempuri.org/GetCardDueAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardStatusUpdate">
+      <soap:operation soapAction="http://tempuri.org/GetCardStatusUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardTransaction">
+      <soap:operation soapAction="http://tempuri.org/GetCardTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAddresses">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerAddresses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAddressUpdate">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerAddressUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetails">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetailsUpdate">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerDetailsUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerIBANs">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerIBANs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerIBANUpdate">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerIBANUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CSCIntegrationSoap12" type="tns:CSCIntegrationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCustomerCards">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerCards" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardActivity">
+      <soap12:operation soapAction="http://tempuri.org/GetCardActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCardActivityResponseHeader" part="ResponseHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardBalance">
+      <soap12:operation soapAction="http://tempuri.org/GetCardBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardDueAmount">
+      <soap12:operation soapAction="http://tempuri.org/GetCardDueAmount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardStatusUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GetCardStatusUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardTransaction">
+      <soap12:operation soapAction="http://tempuri.org/GetCardTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAddresses">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerAddresses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerAddressUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerAddressUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetailsUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerDetailsUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerIBANs">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerIBANs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerIBANUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerIBANUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CSCIntegration">
+    <wsdl:port name="CSCIntegrationSoap" binding="tns:CSCIntegrationSoap">
+      <soap:address location="http://localhost:61049/CSCIntegration.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CSCIntegrationSoap12" binding="tns:CSCIntegrationSoap12">
+      <soap12:address location="http://localhost:61049/CSCIntegration.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
